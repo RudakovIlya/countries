@@ -1,6 +1,7 @@
-import {AppDispatchType} from "../store";
+import {AppThunkType} from "../store";
+import {APIResponseType} from "./countriesReducer";
 
-export const setCountriesAC = (countries: any) => {
+export const setCountriesAC = (countries: APIResponseType[]) => {
     return {
         type: '@@countries/SET_COUNTRIES',
         payload: countries
@@ -20,13 +21,15 @@ export const setErrorAC = (error: string) => {
     } as const
 }
 
-
-export const loadCountries = () => (dispatch: AppDispatchType, _: unknown, {client, api}: any) => {
-    dispatch(setLoadingsAC())
+export const loadCountries = (): AppThunkType => (dispatch, _, {client, api}) => {
+    dispatch(setLoadingsAC()) // Запускаем загрузку.
 
     client.get(api.ALL_COUNTRIES)
         .then((response: any) => {
             dispatch(setCountriesAC(response.data))
+        })
+        .catch((error) => {
+            dispatch(setErrorAC(error.message))
         })
 }
 
