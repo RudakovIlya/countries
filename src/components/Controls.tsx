@@ -1,17 +1,17 @@
 import styled from 'styled-components';
-
 import {Search} from './Search';
 import {CustomSelect} from './CustomSelect';
-
-type MainlandType = 'Africa' | 'America' | 'Asia' | 'Europe' | 'Oceania'
+import {useAppDispatch, useAppSelector} from "../store/hooks/hooks";
+import {selectRegion} from "../store/controls/controls-selectors";
+import { setRegionAC} from "../store/controls/controls-actions";
 
 type OptionsMapValuesType = {
-    value: MainlandType
-    label: MainlandType
+    value: string
+    label: string
 }
 
 type OptionsMapType = {
-    [K in MainlandType]: OptionsMapValuesType
+    [K in string]: OptionsMapValuesType
 }
 
 const optionsMap: OptionsMapType = {
@@ -37,6 +37,15 @@ const Wrapper = styled.div`
 `;
 
 export const Controls = () => {
+
+    const dispatch = useAppDispatch();
+
+    const region = useAppSelector(selectRegion);
+
+    const handleSelect = (region: any) => {
+        dispatch(setRegionAC(region?.value || ''))
+    }
+
     return (
         <Wrapper>
             <Search/>
@@ -44,10 +53,10 @@ export const Controls = () => {
                 options={options}
                 placeholder="Filter by Region"
                 isClearable
+                defaultValue={''}
                 isSearchable={false}
-                value={''}
-                onChange={() => {
-                }}
+                value={optionsMap[region]}
+                onChange={handleSelect}
             />
         </Wrapper>
     );

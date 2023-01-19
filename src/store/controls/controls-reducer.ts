@@ -18,6 +18,12 @@ export const controlsReducer = (state: ControlsType = initialState, action: AllC
                 search: action.payload
             }
         }
+        case "@@controls/SET_REGION": {
+            return {
+                ...state,
+                region: action.payload
+            }
+        }
         default: {
             return state
         }

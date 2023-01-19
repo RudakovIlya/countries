@@ -19,7 +19,7 @@ export const HomePage = () => {
 
     const dispatch = useAppDispatch();
 
-    const countries = useAppSelector(state => selectAllCountries(state, state.controls.search));
+    const countries = useAppSelector(state => selectAllCountries(state, state.controls.search, state.controls.region));
 
     const {qty, status, error} = useAppSelector(selectCountriesInfo);
 
@@ -55,7 +55,6 @@ export const HomePage = () => {
                                 },
                             ],
                         };
-
                         return (
                             <Card
                                 key={c.name}
