@@ -30,6 +30,6 @@ export const store = createStore(persistedReducer, composeEnhancers(applyMiddlew
 
 export const persistor = persistStore(store);
 
-export type RootAppType = ReturnType<typeof store.getState>
+export type RootAppType = ReturnType<typeof store.getState>;
 
-export type AppDispatchType = typeof store.dispatch
+export type AppDispatchType = typeof store.dispatch;
