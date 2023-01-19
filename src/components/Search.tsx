@@ -1,7 +1,10 @@
 import styled from 'styled-components';
-
 import {IoSearch} from 'react-icons/io5';
-import {FC} from "react";
+import {ChangeEvent, memo} from "react";
+import {useDispatch} from "react-redux";
+import {useAppSelector} from "../store/hooks/hooks";
+import {selectSearch} from "../store/controls/controls-selectors";
+import {setSearchAC} from "../store/controls/controls-actions";
 
 const InputContainer = styled.label`
   background-color: var(--colors-ui-base);
@@ -20,7 +23,7 @@ const InputContainer = styled.label`
   }
 `;
 
-const Input = styled.input.attrs({
+const Input = memo(styled.input.attrs({
     type: 'search',
     placeholder: 'Search for a country...',
 })`
@@ -29,18 +32,23 @@ const Input = styled.input.attrs({
   outline: none;
   color: var(--color-text);
   background-color: var(--colors-ui-base);
-`;
+`);
 
-type SearchPropsType = {
-    search: string
-    setSearch: (search: string) => void
-}
 
-export const Search: FC<SearchPropsType> = ({search, setSearch}) => {
+export const Search = () => {
+
+    const dispatch = useDispatch();
+
+    const search = useAppSelector(selectSearch);
+
+    const setSearch = (event: ChangeEvent<HTMLInputElement>) => {
+        dispatch(setSearchAC(event.currentTarget.value))
+    }
+
     return (
         <InputContainer>
             <IoSearch/>
-            <Input onChange={(e) => setSearch(e.target.value)} value={search}/>
+            <Input onChange={setSearch} value={search}/>
         </InputContainer>
     );
 };

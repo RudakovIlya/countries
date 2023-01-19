@@ -15,7 +15,7 @@ root.render(
     <React.StrictMode>
         <PersistGate persistor={persistor}>
             <Provider store={store}>
-                <BrowserRouter>
+                <BrowserRouter basename={'/countries'}>
                     <App/>
                 </BrowserRouter>
             </Provider>

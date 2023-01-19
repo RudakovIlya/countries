@@ -14,11 +14,13 @@ type TCountryInfo = {
 }
 
 export const HomePage = () => {
+
     const navigate = useNavigate();
 
     const dispatch = useAppDispatch();
 
-    const countries = useAppSelector(selectAllCountries);
+    const countries = useAppSelector(state => selectAllCountries(state, state.controls.search));
+
     const {qty, status, error} = useAppSelector(selectCountriesInfo);
 
     useEffect(() => {

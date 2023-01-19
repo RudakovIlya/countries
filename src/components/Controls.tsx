@@ -39,8 +39,7 @@ const Wrapper = styled.div`
 export const Controls = () => {
     return (
         <Wrapper>
-            <Search search={''} setSearch={() => {
-            }}/>
+            <Search/>
             <CustomSelect
                 options={options}
                 placeholder="Filter by Region"

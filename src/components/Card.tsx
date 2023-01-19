@@ -47,7 +47,7 @@ const CardListItem = styled.li`
 type CardPropsType = {
     img: string
     name: string
-    info: any[]
+    info: { title: string, description: string }[]
     onClick: () => void
 }
 
