@@ -23,7 +23,6 @@ export const setErrorAC = (error: string) => {
 
 export const loadCountries = (): AppThunkType => (dispatch, _, {client, api}) => {
     dispatch(setLoadingsAC()) // Запускаем загрузку.
-
     client.get(api.ALL_COUNTRIES)
         .then((response: any) => {
             dispatch(setCountriesAC(response.data))
