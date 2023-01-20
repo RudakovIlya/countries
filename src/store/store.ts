@@ -6,7 +6,7 @@ import {rootReducer, TRootReducer} from "./rootReducer";
 import {persistStore, persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
 import {ThemeActionsType} from "./theme/themeActions";
-import {AllActionsType} from "./AllActionsType";
+import {AllActionsType} from "./allActionsType";
 
 declare global {
     interface Window {
