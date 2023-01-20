@@ -1,4 +1,4 @@
-import {AllCountriesType} from "./countriesActions";
+import {AllCountriesType} from "./countries-actions";
 
 export type StatusType = 'loading' | 'received' | 'rejected' | 'idle'
 

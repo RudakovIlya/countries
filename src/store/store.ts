@@ -5,7 +5,7 @@ import thunk, {ThunkAction} from "redux-thunk";
 import {rootReducer, TRootReducer} from "./rootReducer";
 import {persistStore, persistReducer} from 'redux-persist'
 import storage from 'redux-persist/lib/storage';
-import {ThemeActionsType} from "./theme/themeActions";
+import {ThemeActionsType} from "./theme/theme-actions";
 import {AllActionsType} from "./allActionsType";
 
 declare global {

@@ -24,6 +24,12 @@ export const controlsReducer = (state: ControlsType = initialState, action: AllC
                 region: action.payload
             }
         }
+        case "@@controls/CLEAR_CONTROLS": {
+            return {
+                region: '',
+                search: ''
+            }
+        }
         default: {
             return state
         }

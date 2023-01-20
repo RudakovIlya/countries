@@ -1,5 +1,5 @@
 import {AppThunkType} from "../store";
-import {APIResponseType} from "./countriesReducer";
+import {APIResponseType} from "./countries-reducer";
 
 export const setCountriesAC = (countries: APIResponseType[]) => {
     return {

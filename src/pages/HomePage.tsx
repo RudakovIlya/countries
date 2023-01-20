@@ -4,8 +4,8 @@ import {Card} from '../components/Card';
 import {Controls} from '../components/Controls';
 import {useAppDispatch, useAppSelector} from "../store/hooks/hooks";
 import {useEffect} from "react";
-import {loadCountries} from "../store/countries/countriesActions";
-import {selectAllCountries, selectCountriesInfo} from "../store/countries/countriesSelectors";
+import {loadCountries} from "../store/countries/countries-actions";
+import {selectAllCountries, selectCountriesInfo} from "../store/countries/countries-selectors";
 
 type TCountryInfo = {
     img: string

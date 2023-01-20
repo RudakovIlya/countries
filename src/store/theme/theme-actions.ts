@@ -1,4 +1,4 @@
-import {ThemeType} from "./themeReducer";
+import {ThemeType} from "./theme-reducer";
 
 export const toggleThemeAC = (theme: ThemeType) => {
     return {

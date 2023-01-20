@@ -1,4 +1,4 @@
-import {ThemeActionsType} from "./themeActions";
+import {ThemeActionsType} from "./theme-actions";
 
 export type ThemeType = 'light' | 'dark'
 

@@ -14,8 +14,14 @@ export const setRegionAC = (region: string) => {
     } as const
 }
 
+export const clearControlsAC = () => {
+    return {
+        type: '@@controls/CLEAR_CONTROLS'
+    } as const
+}
+
 export const searchThunk = (value: string): AppThunkType => (dispatch) => {
     dispatch(setSearchAC(value))
 }
 
-export type AllControlsType = ReturnType<typeof setSearchAC> | ReturnType<typeof setRegionAC>
+export type AllControlsType = ReturnType<typeof setSearchAC> | ReturnType<typeof setRegionAC> | ReturnType<typeof clearControlsAC>
