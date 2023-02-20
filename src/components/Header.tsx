@@ -1,12 +1,8 @@
 import styled from 'styled-components';
-import {useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import {IoMoon, IoMoonOutline} from 'react-icons/io5';
-
 import {Container} from './Container';
-import {useAppDispatch, useAppSelector} from "../store/hooks/hooks";
-import {toggleThemeAC} from "../store/theme/theme-actions";
-import {clearControlsAC} from "../store/controls/controls-actions";
+import {ThemeSwitcher} from "../features/theme/ThemeSwitcher";
+import {useCleanup} from "../features/controls/use-cleanup";
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -29,44 +25,17 @@ const Title = styled(Link).attrs({
   font-weight: var(--fw-bold);
 `;
 
-const ModeSwitcher = styled.div`
-  color: var(--colors-text);
-  font-size: var(--fs-sm);
-  cursor: pointer;
-  text-transform: capitalize;
-`;
 
 export const Header = () => {
 
-    const theme = useAppSelector(state => state.theme)
-
-    const dispatch = useAppDispatch();
-
-    const changeTheme = () => {
-        dispatch(toggleThemeAC(theme === 'light' ? 'dark' : 'light'))
-    }
-
-    const clearControls = () => {
-        dispatch(clearControlsAC());
-    }
-
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme);
-    }, [theme]);
+    const {clearControlsHandler} = useCleanup()
 
     return (
         <HeaderEl>
             <Container>
                 <Wrapper>
-                    <Title onClick={clearControls}>Where is the world?</Title>
-                    <ModeSwitcher onClick={changeTheme}>
-                        {theme === 'light' ? (
-                            <IoMoonOutline size="14px"/>
-                        ) : (
-                            <IoMoon size="14px"/>
-                        )}{' '}
-                        <span style={{marginLeft: '0.75rem'}}>{theme} Theme</span>
-                    </ModeSwitcher>
+                    <Title onClick={clearControlsHandler}>Where is the world?</Title>
+                    <ThemeSwitcher/>
                 </Wrapper>
             </Container>
         </HeaderEl>

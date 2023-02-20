@@ -1,5 +1,5 @@
 import {AllDetailsTypes} from "./details-actions";
-import {StatusType} from "../countries/countries-reducer";
+import {StatusType} from "../../features/countries/countries-slice";
 
 type CurrenciesType = {
     code: string
@@ -17,7 +17,7 @@ type Languages2Type = {
 
 type MainLanguagesType = { name: string, nativeName: string } & LanguagesType & Languages2Type
 
-export type DetailsResponseType = {
+export interface DetailsResponseType {
     name: string
     nativeName: string
     flag: string
@@ -31,7 +31,7 @@ export type DetailsResponseType = {
     borders: string[]
 }
 
-export type DetailsType = {
+export interface DetailsType {
     status: StatusType
     error: string | null
     details: DetailsResponseType,

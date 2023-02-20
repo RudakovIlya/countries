@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import {useAppDispatch, useAppSelector} from "../store/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../app/hooks";
 import {DetailsResponseType} from "../store/country-details/details-reducer";
 import {useEffect} from "react";
 import {setNeighborsThunk} from "../store/country-details/details-actions";
@@ -116,7 +116,7 @@ export const Info = (props: DetailsResponseType & InfoType) => {
     const dispatch = useAppDispatch();
 
     useEffect(() => {
-        if(borders.length) {
+        if (borders.length) {
             dispatch(setNeighborsThunk(borders))
         }
     }, [dispatch, borders])

@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import {Search} from './Search';
 import {CustomSelect} from './CustomSelect';
-import {useAppDispatch, useAppSelector} from "../store/hooks/hooks";
-import {selectRegion} from "../store/controls/controls-selectors";
-import { setRegionAC} from "../store/controls/controls-actions";
+import {useRegion} from "./use-region";
 
 type OptionsMapValuesType = {
     value: string
@@ -38,13 +36,7 @@ const Wrapper = styled.div`
 
 export const Controls = () => {
 
-    const dispatch = useAppDispatch();
-
-    const region = useAppSelector(selectRegion);
-
-    const handleSelect = (region: any) => {
-        dispatch(setRegionAC(region?.value || ''))
-    }
+    const {region, handleSelect} = useRegion()
 
     return (
         <Wrapper>

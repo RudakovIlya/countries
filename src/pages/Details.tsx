@@ -4,7 +4,7 @@ import {IoArrowBack} from 'react-icons/io5';
 import {Button} from '../components/Button';
 import {Info} from '../components/Info';
 import {useEffect} from "react";
-import {useAppDispatch, useAppSelector} from "../store/hooks/hooks";
+import {useAppDispatch, useAppSelector} from "../app/hooks";
 import {clearDetailsAC, setDetailsThunk} from "../store/country-details/details-actions";
 import {selectDetails} from "../store/country-details/details-selectors";
 

@@ -1,5 +1,5 @@
-import {AppThunkType} from "../store";
 import {DetailsResponseType} from "./details-reducer";
+import {Dispatch} from "@reduxjs/toolkit";
 
 const setDetailsAC = (details: DetailsResponseType) => {
     return {
@@ -34,20 +34,20 @@ const setNeighborsAC = (neighbors: string[]) => {
     } as const
 }
 
-export const setDetailsThunk = (name: string): AppThunkType => (dispatch, _, {client, api}) => {
+export const setDetailsThunk = (name: string): any => (dispatch: Dispatch, _: any, {client, api}: any) => {
     dispatch(setLoadingAC());
-    client.get(api.searchByCountry(name)).then((response) => {
+    client.get(api.searchByCountry(name)).then((response: any) => {
         dispatch(setDetailsAC(response.data[0]))
-    }).catch((error) => {
+    }).catch((error: any) => {
         dispatch(setErrorAC(error.message))
     })
 
 }
 
-export const setNeighborsThunk = (neighbors: string[]): AppThunkType => (dispatch, _, {client, api}) => {
-    client.get(api.filterByCode(neighbors)).then((response) => {
+export const setNeighborsThunk = (neighbors: string[]): any => (dispatch: Dispatch, _: any, {client, api}: any) => {
+    client.get(api.filterByCode(neighbors)).then((response: any) => {
         dispatch(setNeighborsAC(response.data.map((c: { name: string }) => c.name)))
-    }).catch((error) => {
+    }).catch((error: any) => {
         dispatch(setErrorAC(error.message))
     })
 }

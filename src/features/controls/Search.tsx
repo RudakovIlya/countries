@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import {IoSearch} from 'react-icons/io5';
-import {ChangeEvent, memo} from "react";
-import {useAppDispatch, useAppSelector} from "../store/hooks/hooks";
-import {selectSearch} from "../store/controls/controls-selectors";
-import {searchThunk} from "../store/controls/controls-actions";
+import {memo} from "react";
+import {useSearch} from "./use-search";
 
 const InputContainer = styled.label`
   background-color: var(--colors-ui-base);
@@ -35,19 +33,12 @@ const Input = memo(styled.input.attrs({
 
 
 export const Search = () => {
-
-    const dispatch = useAppDispatch();
-
-    const search = useAppSelector(selectSearch);
-
-    const setSearch = (event: ChangeEvent<HTMLInputElement>) => {
-        dispatch(searchThunk(event.currentTarget.value))
-    }
+    const {search, setSearchHandler} = useSearch()
 
     return (
         <InputContainer>
             <IoSearch/>
-            <Input onChange={setSearch} value={search}/>
+            <Input onChange={setSearchHandler} value={search}/>
         </InputContainer>
     );
 };
