@@ -112,7 +112,7 @@ export const Info = memo((props: DetailsResponseType & InfoType) => {
 
   useInfo(borders)
 
-  const { status, neighbors, error } = useAppSelector((state) => state.details)
+  const { status, neighbors } = useAppSelector((state) => state.details)
 
   return (
     <Wrapper>
@@ -164,7 +164,6 @@ export const Info = memo((props: DetailsResponseType & InfoType) => {
             </ListGroup>
             <Meta>
               <b>Border Countries:</b>
-              {error && <h2>{error}</h2>}
               {!borders.length ? (
                 <span>There is no border countries</span>
               ) : (
