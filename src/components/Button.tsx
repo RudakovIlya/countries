@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from 'styled-components'
 
 export const Button = styled.button`
   padding: 0 1rem;
@@ -14,4 +14,4 @@ export const Button = styled.button`
 
   color: var(--color-text);
   cursor: pointer;
-`;
+`

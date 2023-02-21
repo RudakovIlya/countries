@@ -1,42 +1,37 @@
-import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import {RootState} from "../../app/store";
-
-export interface IControlsType {
-    search: string,
-    region: string
-}
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { RootState } from '../../app/store'
+import { IControlsType } from './types'
 
 const initialState: IControlsType = {
-    search: '',
-    region: ''
+  search: '',
+  region: '',
 }
 
 export const controlsSlice = createSlice({
-    name: '@@controls',
-    initialState,
-    reducers: {
-        setSearch: (state, action: PayloadAction<string>) => {
-            state.search = action.payload
-        },
-        setRegion: (state, action: PayloadAction<string>) => {
-            state.region = action.payload
-        },
-        clearControls: () => initialState
-    }
+  name: '@@controls',
+  initialState,
+  reducers: {
+    setSearch: (state, action: PayloadAction<string>) => {
+      state.search = action.payload
+    },
+    setRegion: (state, action: PayloadAction<string>) => {
+      state.region = action.payload
+    },
+    clearControls: () => initialState,
+  },
 })
 
 export const selectSearch = (state: RootState) => {
-    return state.controls.search
-};
+  return state.controls.search
+}
 
 export const selectRegion = (state: RootState): string => {
-    return state.controls.region
-};
+  return state.controls.region
+}
 
 export const selectControls = (state: RootState) => {
-    return state.controls
-};
-
+  return state.controls
+}
 
 export const controlsReducer = controlsSlice.reducer
-export const {setSearch, clearControls, setRegion} = controlsSlice.actions
+export const { setSearch, clearControls, setRegion } = controlsSlice.actions

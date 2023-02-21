@@ -1,21 +1,19 @@
-import {useAppDispatch, useAppSelector} from "../../app/hooks";
-import {setTheme} from "./theme-slice";
-import {useEffect} from "react";
+import { useAppDispatch, useAppSelector } from '../../app/hooks'
+import { setTheme } from './theme-slice'
+import { useEffect } from 'react'
 
 export const useTheme = () => {
+  const theme = useAppSelector((state) => state.theme)
 
-    const theme = useAppSelector(state => state.theme)
+  const dispatch = useAppDispatch()
 
-    const dispatch = useAppDispatch();
+  const changeTheme = () => {
+    dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))
+  }
 
-    const changeTheme = () => {
-        dispatch(setTheme(theme === 'light' ? 'dark' : 'light'))
-    }
+  useEffect(() => {
+    document.body.setAttribute('data-theme', theme)
+  }, [theme])
 
-    useEffect(() => {
-        document.body.setAttribute('data-theme', theme);
-    }, [theme]);
-
-    return {theme, changeTheme}
-
+  return { theme, changeTheme }
 }

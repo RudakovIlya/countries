@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import React, {FC, ReactElement} from "react";
+import styled from 'styled-components'
+import React, { FC, memo, ReactElement } from 'react'
 
 const Wrapper = styled.section`
   width: 100%;
@@ -20,12 +20,12 @@ const Wrapper = styled.section`
     grid-template-columns: repeat(4, 1fr);
     gap: 4rem;
   }
-`;
+`
 
 type ListPropsType = {
-    children: ReactElement[]
+  children: ReactElement[]
 }
 
-export const List: FC<ListPropsType> = ({children}) => {
-    return <Wrapper>{children}</Wrapper>;
-};
+export const List: FC<ListPropsType> = memo(({ children }) => {
+  return <Wrapper>{children}</Wrapper>
+})
